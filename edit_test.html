@@ -47,7 +47,6 @@ popup_caption = function(data, replace_target, x, y)
   pop_selection.append('input').attr('type','submit').attr('value','OK')
     .on('click',function(d)
     {
-      // replace data bind again
       var caption_text = d3.select('[name=caption_text]').property('value');
       if (caption_text.length != '')
       {
@@ -129,6 +128,11 @@ bind_data = function()
         return;
       }
       if (selectObj.anchorNode !== selectObj.focusNode)
+      {
+        return;
+      }
+      var target_data = d3.select(this).datum();
+      if (target_data.marked)
       {
         return;
       }
