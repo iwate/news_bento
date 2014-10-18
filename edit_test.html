@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="/js/vendor/d3.v3.min.js"></script>
+<style>
+.pop
+{
+  background-color: rgba(128,64,255,0.9);
+  color: #FFF;
+}
+.caption
+{
+  background-color: rgba(64,128,128,0.9);
+  color: #FFF;
+}
+.marked
+{
+  background-color: #FF0;
+}
+.unmarked
+{
+}
+</style>
+<body>
+
+<article>
+</article>
+<script>
+
+var next_id = 2;
+var full_text = [
+  {
+    text:'　小渕優子経済産業相の後援会などが、会員らの観劇会の費用の一部を負担した疑いがある問題で、自民党から小渕氏に対する早期辞任論が強まり始めた。小渕氏は１８日の出張を急きょ取りやめるなど、公務にも影響が出ている。安倍晋三首相は同日午後に外国出張から帰国した後、小渕氏の進退を本格的に協議するとみられる。小渕経産相「総理と会う予定はない」　政治資金問題　首相に近い自民党幹部は１８日、「小渕氏は将来がある人だ。（首相は）無理に頑張らせるより、傷つけないことの方を考えるんじゃないか」と述べ、小渕氏の意向を確認したうえで、早期に辞任させる可能性を示唆した。自民党参院幹部も「一両日中の辞任の判断があると思う。進退の判断が長引くと安倍政権に影響する」と語った。　また、小渕氏が所属する額賀派幹部は、アジア欧州会議（ＡＳＥＭ）首脳会合でイタリアを訪問中の首相に電話し、「ご迷惑をおかけして申し訳ないが、しっかり対処する」と伝えた。　小渕氏は１８日、「現地で予想される混乱を回避するため」として愛知県への出張を中止した。同県豊山町の三菱重工業小牧南工場を訪れ、国産初のジェット旅客機「ＭＲＪ（ミツビシ・リージョナル・ジェット）」の機体の完成を祝う式典などに出席し、式典後には記者団の取材を受けることになっていた。',
+    marked:false,
+    caption:'',
+    id: 'tid1'
+  }];
+var mouse_downed_node = null;
+
+popup_caption = function(data, replace_target, x, y)
+{
+  var pop_selection = d3.select('body')
+    .append('div')
+      .attr('id','popup')
+      .attr('class','pop')
+      .style({'position':'absolute',top:''+y+'px',left:''+x+'px'});
+  pop_selection.append('input').attr('type','text').attr('name','caption_text').call(function(d){this.node().focus();});
+  pop_selection.append('input').attr('type','submit').attr('value','OK')
+    .on('click',function(d)
+    {
+      // replace data bind again
+      var caption_text = d3.select('[name=caption_text]').property('value');
+      if (caption_text.length != '')
+      {
+        var tmp = [];
+        full_text.forEach(function(d)
+        {
+          if (d.id === replace_target)
+          {
+            data.forEach(function(dd)
+            {
+              if (dd.text.length !== 0)
+              {
+                if (dd.marked)
+                {
+                  dd.caption = caption_text;
+                }
+                tmp.push(dd);
+              }
+            });
+          }
+          else
+          {
+            tmp.push(d);
+          }
+        });
+        full_text = tmp;
+        bind_data();
+      }
+      d3.select('#popup').remove();
+    });
+  pop_selection.append('input').attr('type','submit').attr('value','キャンセル')
+    .on('click',function(d)
+    {
+      d3.select('#popup').remove();
+    });
+}
+
+pop_caption = function(text, x, y)
+{
+  d3.select('#caption').remove();
+  d3.select('body')
+    .append('div')
+    .style({'position':'absolute',top:''+y+'px',left:''+x+'px'})
+    .attr('id','caption')
+    .attr('class','caption')
+    .text(text);
+}
+
+bind_data = function()
+{
+  d3.select('article')
+    .selectAll('span').remove();
+
+  d3.select('article')
+    .selectAll('span')
+    .data(full_text)
+    .enter()
+    .append('span')
+    .text(function(d){return d.text;})
+    .attr('id', function(d){return d.id;})
+    .attr('class', function(d){return (d.marked)?'marked':'unmarked';})
+    .on('mousedown', function()
+    {
+      mouse_downed_node = d3.select(this);
+      d3.select('#popup').remove();
+      d3.select('#caption').remove();
+    })
+    .on('mouseup',function()
+    {
+      var selectObj = window.getSelection();
+      if (selectObj.type !== 'Range')
+      {
+        
+        var dat = d3.select(this).datum();
+        if (dat.marked)
+        {
+          pop_caption(dat.caption, d3.event.x, d3.event.y);
+        }
+        return;
+      }
+      if (selectObj.anchorNode !== selectObj.focusNode)
+      {
+        return;
+      }
+      var target_text = d3.select(this).datum().text;
+      var target_id = d3.select(this).datum().id;
+      var splited_text = [
+        {
+          text:target_text.substr(0,selectObj.anchorOffset),
+          marked: false,
+          caption: '',
+          id: ('tid' + next_id++)
+        },
+        {
+          text:target_text.substr(selectObj.anchorOffset, selectObj.focusOffset - selectObj.anchorOffset),
+          marked: true,
+          caption: '',
+          id: ('tid' + next_id++)
+        },
+        {
+          text:target_text.substr(selectObj.focusOffset, target_text.length - selectObj.focusOffset),
+          marked: false,
+          caption: '',
+          id: ('tid' + next_id++)
+        }
+      ]
+      popup_caption(splited_text, target_id, d3.event.x, d3.event.y);
+    });
+}
+
+bind_data();
+</script>
