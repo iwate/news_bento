@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+/* 全体 */
+.jspContainer { overflow:hidden; position:relative; }
+
+/* スクロールバーを除いたエリア */
+.jspPane { position:absolute; }
+
+/* 縦スクロールバー ここでスクロールの幅など設定します。*/
+.jspVerticalBar { position:absolute; top:0; right:0; width:8px; height:100%; }
+
+/* 横スクロールバー ここでスクロールの幅など設定します。*/
+.jspHorizontalBar { position:absolute; bottom:0; left:0; width:100%; height:10px; }
+
+/* 背景 ここでスクロールの背景色を決めます。*/
+.jspTrack { background-color:#fff; position:relative; }
+
+/* ノブ ここでスクロールの色を決めます。*/
+.jspDrag { background: #aed169; position:relative; top:0; left:0; cursor:pointer; border-radius: 6px;}
+.jspDrag:hover{opacity: 0.8;}
+.jspHorizontalBar .jspTrack, .jspHorizontalBar .jspDrag { float:left; height:100%; }

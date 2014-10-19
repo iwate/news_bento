@@ -1,0 +1,192 @@
+/*edit css*/
+
+
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #fdefe5;
+}
+
+p{
+	margin: 0;
+	padding: 0;
+}
+
+#container{
+	clear: both;
+}
+
+#KijiSelArea{
+	margin: 0 20px 0 0;
+	padding: 15px;
+	width: 450px;
+	height: 600px;
+	position: relative;
+	background-color: #fff;
+	float: left;
+	border: 3px solid #ffb000;
+	border-radius: 5px;
+}
+
+#KijiSelArea h2{
+	margin: 0;
+	padding: 0;
+	width: 435px;
+	height: 50px;
+	font-size: 16px;
+	background-color: #fff;
+}
+
+#KijiSelArea ul{
+	margin: 0;
+	padding: 0;
+	width: 450px;
+	height: 520px;
+	/*overflow-x: hidden;
+	overflow-y: scroll;*/
+	overflow: hidden;
+	background-color: #fff;
+}
+
+#KijiSelArea ul li{
+	width: 420px;
+	height: 100px;
+	display: block;
+	position: relative;
+}
+
+#KijiSelArea ul li a.popupBtn{
+	display: block;
+	width: 420px;
+	height: 100px;
+	position: absolute;
+}
+
+#KijiSelArea ul li a.popupBtn:hover{
+	background-color: #dfedc3;
+}
+
+#KijiSelArea ul li a.appendBtn{
+	display: block;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	background-color: #ff0000;
+}
+
+/*-----------------------------------*/
+
+
+#BentoKouhoArea{
+	margin: 0;
+	padding: 15px;
+	width: 450px;
+	height: 500px;
+	position: relative;
+	background-color: #fff;
+	float: left;
+	border: 3px solid #ffb000;
+	border-radius: 5px;
+}
+
+#BentoKouhoArea h2{
+	margin: 0;
+	padding: 0;
+	width: 435px;
+	height: 50px;
+	font-size: 16px;
+	background-color: #fff;
+}
+
+#BentoKouhoArea ul{
+	margin: 0;
+	padding: 0;
+	width: 450px;
+	height: 420px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color: #fff;
+}
+
+#BentoKouhoArea ul li{
+	width: 420px;
+	height: 100px;
+	display: block;
+	position: relative;
+}
+
+#BentoKouhoArea ul li a.popupBtn{
+	display: block;
+	width: 420px;
+	height: 100px;
+	position: absolute;
+}
+
+#BentoKouhoArea ul li a.popupBtn:hover{
+	background-color: #dfedc3;
+}
+
+#BentoKouhoArea ul li a.editBtn{
+	display: block;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 40px;
+	top: 5px;
+	background-color: #ff0000;
+}
+
+#BentoKouhoArea ul li a.deleteBtn{
+	display: block;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	background-color: #ff0000;
+}
+
+a.btn_up{
+	width: 24px;
+	height: 16px;
+	background-image: url(../images/edit/btn_up.gif);
+	position:absolute;
+	right: 5px;
+	top: 10px;
+}
+a.btn_up:hover{
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+a.btn_down{
+	width: 24px;
+	height: 16px;
+	background-image: url(../images/edit/btn_down.gif);
+	position: absolute;
+	right: 5px;
+	bottom: 10px;
+}
+a.btn_down:hover{
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/

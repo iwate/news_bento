@@ -6,13 +6,14 @@
 
 <link rel="stylesheet" type="text/css" href="css/vendor/normalize.css">
 <link rel="stylesheet" href="css/vendor/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/vendor/jquery.jscrollpane.css" />
+<link rel="stylesheet" href="css/edit.css">
 
 <script src="js/vendor/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/vendor/jquery-ui.min.js"></script>
-<script src="js/get.js"></script>
-
-<style>
-</style>
+<script type="text/javascript" src="js/vendor/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="js/vendor/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/edit_ui.js"></script>
 
 </head>
 
@@ -24,8 +25,133 @@
 		<li class="returnTop"><a href="top.html">トップへ戻る</a></li>
 	</ul>
 
-	<h2>ニュース一覧</h2>
-	<h2>カテゴリ一覧</h2>
+	<!-- container BGN -->
+	<div id="container">
+		<!-- 記事選択エリア BGN -->
+		<div id="KijiSelArea">
+			<h2>今日のほかほかニュース</h2>
+			<ul>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="appendBtn"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="appendBtn"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="appendBtn"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="appendBtn"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="appendBtn"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="appendBtn"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="appendBtn"></a>
+				</li>
+			</ul>
+			<a class="btn_up" href="javascript:void(0)"></a>
+			<a class="btn_down" href="javascript:void(0)"></a>
+		</div>
+		<!-- 記事選択エリア END -->
 
+		<!-- 候補記事エリア BGN -->
+		<div id="BentoKouhoArea">
+			<h2>今日のお弁当</h2>
+			<ul>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="editBtn"></a>
+					<a href="javascript:void(0);" class="deleteBtn"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="editBtn"></a>
+					<a href="javascript:void(0);" class="deleteBtn"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="editBtn"></a>
+					<a href="javascript:void(0);" class="deleteBtn"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="editBtn"></a>
+					<a href="javascript:void(0);" class="deleteBtn"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="editBtn"></a>
+					<a href="javascript:void(0);" class="deleteBtn"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="editBtn"></a>
+					<a href="javascript:void(0);" class="deleteBtn"></a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" class="popupBtn">
+						<p class="midashi">記事の見出しです</p>
+						<p class="honbun">ああああああああああああああああああああああああああああああ</p>
+					</a>
+					<a href="javascript:void(0);" class="editBtn"></a>
+					<a href="javascript:void(0);" class="deleteBtn"></a>
+				</li>
+			</ul>
+			<a class="btn_up" href="javascript:void(0)"></a>
+			<a class="btn_down" href="javascript:void(0)"></a>
+		</div>
+		<!-- 候補記事エリア END -->
+	</div>
+	<!-- container END -->
 </body>
 </html>
