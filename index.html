@@ -1,8 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="/js/vendor/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var accessToken = common.getAccessToken();
+		if(accessToken != null || accessToken != ""){
+			$("#login").hide();
+			getMe().done(function (data) {
+				$("#icon").attr("src", data.iconUrl);
+				$("#username").text(data.name);
+			});
+		} else {
+			$("#login").click(loginWithFacebook);
+		}
+	})
+	function getMe(success){
+		return $.ajax({
+			method: 'get',
+			url: "http://news-bento.azurewebsites.net/api/me",
+			contentType: "application/json; charset=utf-8",
+			headers: {
+				'Authorization': 'Bearer ' + accessToken
+			}
+	            });
+	}
+	function getExternalLogins(){
+		return $.ajax({
+			method: 'get',
+			url: "news-bento.azurewebsites.net/api/Account/ExternalLogins?returnUrl=http%3A%2F%2Fbento-times.azurewebsites.net%2Fcallback&generateState=true",
+			contentType: "application/json; charset=utf-8"
+	            });
+	}
+	function loginWithFacebook(){
+		getExternalLogins.done(function(data){
+			var externalLogins = {};
+			for (var i = data.length - 1; i >= 0; i--) {
+				externalLogins[data[i].name] = data[i].url;
+			};
+			window.location = externalLogins.Facebook;
+		});
+	}
+</script>
 </head>
 <body>
-hello news papers.
+
+<button id="login">Login</button>
+<img id="icon" src="">
+<p id="username"></p>
 </body>
 </html>
