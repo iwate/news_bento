@@ -6,7 +6,7 @@
 <script type="text/javascript">
 	$(function(){
 		var accessToken = common.getAccessToken();
-		if(accessToken != null || accessToken != ""){
+		if(accessToken != null){
 			$("#login").hide();
 			getMe().done(function (data) {
 				$("#icon").attr("src", data.iconUrl);
