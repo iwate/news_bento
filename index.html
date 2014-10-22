@@ -13,7 +13,9 @@
 				$("#username").text(data.name);
 			});
 		} else {
-			$("#login").click(loginWithFacebook);
+			$("#login").click(function(){
+				loginWithFacebook();
+			});
 		}
 	})
 	function getMe(success){
@@ -29,7 +31,7 @@
 	function getExternalLogins(){
 		return $.ajax({
 			method: 'get',
-			url: "news-bento.azurewebsites.net/api/Account/ExternalLogins?returnUrl=http%3A%2F%2Fbento-times.azurewebsites.net%2Fcallback&generateState=true",
+			url: "http://news-bento.azurewebsites.net/api/Account/ExternalLogins?returnUrl=http%3A%2F%2Fbento-times.azurewebsites.net%2Fcallback&generateState=true",
 			contentType: "application/json; charset=utf-8"
 	            });
 	}
