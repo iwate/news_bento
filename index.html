@@ -22,7 +22,7 @@
 			url: "http://news-bento.azurewebsites.net/api/me",
 			contentType: "application/json; charset=utf-8",
 			headers: {
-				'Authorization': 'Bearer ' + accessToken
+				'Authorization': 'Bearer ' + common.getAccessToken()
 			}
 	            });
 	}
