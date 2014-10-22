@@ -14,6 +14,7 @@
 			});
 		} else {
 			$("#login").click(function(){
+				$("#login").text("Wait...");
 				loginWithFacebook();
 			});
 		}
@@ -36,7 +37,7 @@
 	            });
 	}
 	function loginWithFacebook(){
-		getExternalLogins.done(function(data){
+		getExternalLogins().done(function(data){
 			var externalLogins = {};
 			for (var i = data.length - 1; i >= 0; i--) {
 				externalLogins[data[i].name] = data[i].url;
