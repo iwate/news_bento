@@ -25,6 +25,7 @@
 			url: "http://news-bento.azurewebsites.net/api/me",
 			contentType: "application/json; charset=utf-8",
 			headers: {
+				'Origin': 'http://bento-times.azurewebsites.net',
 				'Authorization': 'Bearer ' + common.getAccessToken()
 			}
 	            });
@@ -33,7 +34,10 @@
 		return $.ajax({
 			method: 'get',
 			url: "http://news-bento.azurewebsites.net/api/Account/ExternalLogins?returnUrl=http%3A%2F%2Fbento-times.azurewebsites.net%2Fcallback&generateState=true",
-			contentType: "application/json; charset=utf-8"
+			contentType: "application/json; charset=utf-8",
+			headers: {
+				'Origin': 'http://bento-times.azurewebsites.net'
+			}
 	            });
 	}
 	function loginWithFacebook(){
